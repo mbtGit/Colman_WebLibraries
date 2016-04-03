@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+   
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    @Scripts.Render("~/Scripts/AllScripts.js")
+    @RenderSection("scripts", required: false)
+
+</head>
+<body>
+
+    <header id="header">
+        <div class="logo">
+            <a href="/">Libraries</a>
+        </div>
+        <nav>
+            <!-- Navigation -->
+            <ul class="top">
+                <li class="link">@Html.ActionLink("ספרים", "Index", "Books")
+                    <ul class="sub">
+                        <li>@Html.ActionLink("מתח", "Index", "Books", new { strCategory = "מתח" }, new { @class = "link" })</li>
+                        <li>@Html.ActionLink("בישול", "Index", "Books", new { strCategory = "בישול" }, new { @class = "link" })</li>
+                        <li>@Html.ActionLink("דרמה", "Index", "Books", new { strCategory = "דרמה" }, new { @class = "link" })</li>
+                        <li>@Html.ActionLink("כל הספרים", "Index", "Books", null, new { @class = "link" })</li>
+                        @if (ViewBag.Admin != null) { 
+                        <li>@Html.ActionLink("הוספת ספר", "Create", "Books", null, new { @class = "link" })</li>
+                        }
+                        <li>@Html.ActionLink("חיפוש ספר", "Search", "Books", null, new { @class = "link" })</li>
+                    </ul>
+                </li>
+                <li class="link">@Html.ActionLink("ספריות", "Index", "Library", null, new { @class = "link" })
+                    <ul class="sub">
+                        @if (ViewBag.Admin != null) {
+                        <li class="link">@Html.ActionLink("הוספת ספריה", "Create", "Library", null, new { @class = "link" })</li>
+                        }
+                        <li>@Html.ActionLink("חיפוש ספריה", "Search", "Library", null, new { @class = "link" })</li>
+                    </ul>
+                </li>
+                <li class="link">
+                    @Html.ActionLink("סופרים", "Index", "Writers", null, new { @class = "link" })
+                <ul class="sub">
+                    @if (ViewBag.Admin != null) {
+                    <li class="link">@Html.ActionLink("הוספת סופר", "Create", "Writers", null, new { @class = "link" })</li>
+                    }
+                    <li class="link">@Html.ActionLink("חיפוש סופר", "Search", "Writers", null, new { @class = "link" })</li>
+                </ul>
+                </li>
+                <li>לקוחות
+                    <ul class="sub">
+                        @if (ViewBag.Admin != null) {
+                        <li class="link">@Html.ActionLink("הוספת לקוח", "Create", "Customer", null, new { @class = "link" })</li>
+                        }
+                        <li class="link">@Html.ActionLink("ספרים מושאלים", "LoanedBooks", "Customer", null, new { @class = "link" })</li>
+                        <li class="link">@Html.ActionLink("חיפוש לקוח", "Search", "Customer", null, new { @class = "link" })</li>
+                    </ul>
+                </li>
+                @if (ViewBag.UserName == null) {
+                <li class="link">@Html.ActionLink("התחבר", "Login", "Login", null, new { @class = "link" })</li>
+                }
+                else
+                {
+                  <li>@Html.ActionLink("התנתק", "Logout", "Login")</li>  
+                }
+@if (ViewBag.UserName != null) {
+                <li>שלום @ViewBag.UserName</li>
+                }
+            </ul>
+        </nav>
+    </header>
+
+    <section id="intro">
+        <!-- Introduction -->
+
+    </section>
+
+    <div style="float:right; width:85%; height:70%; position: absolute; margin-top: 105px">
+
+        <div id="MainContent" style="float: right; padding-right: 15px; padding-left: 10px; width: 62%; height: 100%;">@RenderBody()</div>
+        <div id="map" style="float: right; width: 35%; height: 100%;"></div>
+    </div>
+    <aside>
+        <section>
+            <header>חדש על המדף</header>
+            <ul>
+            <li>סיפר הצלחה - סער ברוך</li>
+            <li>הגזמה וחצי - אלי ברוש</li>
+            <li>צבעים נמלטים - ליסה בר</li>
+                <li>רחוק מדי - אבי גליינס</li>
+                <li>קטלני - סנדרה בראון</li>
+                <li>הטבחית של הימלר - פרנס אוליבייה ז'יסבר</li>
+            </ul>
+        </section>
+        <section>
+            <header>המומלצים שלנו</header>
+            <ul>
+                <li>בית קיץ עם בריכה - הרמן קוך</li>
+                <li>אודסה סטאר - הרמן קוך</li>
+                <li>בקצה הלילה - ג'אנין פרוסט</li>
+                <li>טרף קל - ישי שריד</li>
+                <li>החתונה - ניקולס ספארקס</li>
+            </ul>
+        </section>
+    </aside>
+    <footer>
+        <div class="clearfix">
+            <div id="connect" style="width:200px;">
+                <p class="newspaper">
+                    Facebook<a href="" class="facebook"></a>
+                    Twitter<a href="" class="twitter"></a>
+                    Email<a href="" class="mail"></a>
+                </p>
+            </div>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                      
+            All rights reserved to Or Shapira and Matan Borenkraout © </p>
+        </div>
+    </footer>
+
+    
+
+    
+</body>
+</html>
+

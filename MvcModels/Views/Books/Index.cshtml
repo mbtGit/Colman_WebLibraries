@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MvcModels.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = Request.IsAjaxRequest() ? null : "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Category</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookWriter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher)
+        </td>
+        <td>
+            @foreach (var field in ViewBag.Writers)
+            {
+                if (field.BookId == item.Id)
+                {
+                    var wantedWriter = field;
+                    @wantedWriter.Writer
+                    break;
+                }
+            }
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate)
+        </td>
+        <td>
+            @Html.ActionLink("השאל", "LoanABook", "Customer", new { id=item.Id }, null) |
+            @Html.ActionLink("ערוך", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("מחק", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

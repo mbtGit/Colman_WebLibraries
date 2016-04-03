@@ -1,0 +1,12 @@
+﻿
+@{
+        Layout = Request.IsAjaxRequest() && ViewBag.UserName == null && ViewBag.LoggedOut == null ? null : "~/Views/Shared/_Layout.cshtml";
+
+if (ViewBag.LoggedOut != null)
+{
+ViewBag.LoggedOut = null;
+}
+}
+
+התנתקת בהצלחה
+

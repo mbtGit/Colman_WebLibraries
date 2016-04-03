@@ -1,0 +1,78 @@
+﻿@model MvcModels.Models.Book
+
+@{
+    Layout = Request.IsAjaxRequest() ? null : "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>עריכת ספר</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group tableRow">
+
+            <div class="tableCol">
+                @Html.EditorFor(model => model.Publisher)
+                @Html.ValidationMessageFor(model => model.Publisher)
+            </div>
+            @Html.LabelFor(model => model.Publisher, new { @class = "tableCol" })
+        </div>
+
+        <div class="form-group tableRow">
+
+            <div class="tableCol">
+                @Html.EditorFor(model => model.BookName)
+                @Html.ValidationMessageFor(model => model.BookName)
+            </div>
+            @Html.LabelFor(model => model.BookName, new { @class = "tableCol" })
+        </div>
+
+        <div class="form-group tableRow">
+
+            <div class="tableCol">
+                @Html.EditorFor(model => model.Genre)
+                @Html.ValidationMessageFor(model => model.Genre)
+            </div>
+            @Html.LabelFor(model => model.Genre, new { @class = "tableCol" })
+        </div>
+
+        <div class="form-group tableRow">
+
+            <div class="tableCol">
+                @Html.EditorFor(model => model.PublishYear)
+                @Html.ValidationMessageFor(model => model.PublishYear)
+            </div>
+            @Html.LabelFor(model => model.PublishYear, new { @class = "tableCol" })
+        </div>
+
+        <div class="form-group tableRow">
+
+            <div class="tableCol">
+                @Html.EditorFor(model => model.AddedDate)
+                @Html.ValidationMessageFor(model => model.AddedDate)
+            </div>
+            @Html.LabelFor(model => model.AddedDate, new { @class = "tableCol" })
+        </div>
+
+        <div class="form-group tableRow">
+
+            <div class="tableCol">
+                @Html.EditorFor(model => model.Rate)
+                @Html.ValidationMessageFor(model => model.Rate)
+            </div>
+            @Html.LabelFor(model => model.Rate, new { @class = "tableCol" })
+        </div>
+
+        <div class="form-group tableRow">
+            <div class="tableButton">
+                <input type="submit" value="שמור" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

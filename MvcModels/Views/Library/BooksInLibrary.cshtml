@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcModels.Models.Library>
+
+@{
+    ViewBag.Title = "BooksInLibrary";
+    Layout = Request.IsAjaxRequest() ? null : "~/Views/Shared/_Layout.cshtml";
+}
+<h2>פה יופיעו הספרים בספריות</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LibraryAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LibraryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LibraryAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LibraryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

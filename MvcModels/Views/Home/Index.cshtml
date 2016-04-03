@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Or And Matan's Libraries";
+    Layout = Request.IsAjaxRequest() && ViewBag.UserName == null && ViewBag.LoggedOut == null ? null : "~/Views/Shared/_Layout.cshtml";
+
+if (ViewBag.LoggedOut != null)
+{
+ViewBag.LoggedOut = null;
+}
+}
+
+<!doctype html>
+<html>
+<head>
+    <!--
+        אור שפירא 203375167
+        מתן בורנקראוט 203994314-->
+    <title>Or And Matan's Libraries</title>
+    
+</head>
+<body>
+    <h1>אתר הספריות</h1>
+</body>
+</html>
+
+

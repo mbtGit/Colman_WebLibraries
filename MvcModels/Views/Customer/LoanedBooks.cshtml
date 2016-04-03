@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MvcModels.Models.Customer>
+
+@{
+    Layout = Request.IsAjaxRequest() ? null : "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            ספרים בבעלותו
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                @foreach (var bookCustomer in ViewBag.BookLoanes)
+                                {
+                                    if (bookCustomer.Id == item.Id)
+                                    {
+                                        <li>@bookCustomer.BookName</li>
+                                    }
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+        </td>
+    </tr>
+}
+
+</table>

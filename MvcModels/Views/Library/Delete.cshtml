@@ -1,0 +1,37 @@
+﻿@model MvcModels.Models.Library
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = Request.IsAjaxRequest() ? null : "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h4>האם אתה בטוח שברצונך למחוק את הספריה הזו?</h4>
+    <hr />
+    <dl class="">
+
+
+        <dd>
+            @Html.DisplayFor(model => model.LibraryAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LibraryAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LibraryName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LibraryName)
+        </dt>
+
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="מחק" class="btn btn-default" />
+        </div>
+    }
+</div>

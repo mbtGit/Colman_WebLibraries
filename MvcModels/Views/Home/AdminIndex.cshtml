@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Or And Matan's Libraries";
+    Layout = Request.IsAjaxRequest() && ViewBag.UserName == null ? null : "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <!--
+      אור שפירא 203375167
+      מתן בורנקראוט 203994314
+     -->
+    <title>Or And Matan's Libraries</title>
+
+
+</head>
+<body width="100%" height="100%">
+
+    <div style="width: 100%; height: 70%; position:inherit">
+        <canvas id="mycanvas" style="width:100%; height:20%;">Your browser does not support the canvas element.</canvas>
+        <script>
+            var canvas = document.getElementById("mycanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.font = "40px Comic Sans MS";
+            ctx.fillStyle = "red";
+            ctx.textAlign = "center";
+            ctx.fillText("Library Puppets", canvas.width / 2, canvas.height / 2, canvas.width / 2.5);
+        </script>
+        <video width="100%" height="80%" autoplay><source src="~/images/PUPPETS IN THE LIBRARY.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+    </div>
+    <div style="width: 100%; height: 20%; position:inherit; margin-top:5%; padding-right:20%">
+        <textarea style="float: right; margin-right=20px; width: 50%; position: initial" id="postText"></textarea>
+        <div style="width: 20%; height: 100%; position: inherit; float: right">
+            <div class="fb-login-button" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+            <button style="width:75px;" onclick="fbPagePost()">Post</button>
+        </div>
+    </div>
+
+
+</body>
+</html>

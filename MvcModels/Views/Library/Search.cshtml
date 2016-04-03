@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MvcModels.Models.Library>
+
+@{
+    Layout = Request.IsAjaxRequest() ? null : "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @using (Html.BeginForm("Search"))
+    {
+    <p>
+        חיפוש: @Html.TextBox("strLibraryAddress", null, new { @placeholder = "כתובת הספריה" })
+        <input type="submit" value="חפש" />
+    </p>
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LibraryAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LibraryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LibraryAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LibraryName)
+        </td>
+    </tr>
+}
+
+</table>
